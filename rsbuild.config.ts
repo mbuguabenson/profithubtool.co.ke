@@ -118,7 +118,8 @@ export default defineConfig({
         },
     },
     dev: {
-        hmr: true,
+        // Disable HMR to avoid lazy-compilation hot module communication errors
+        hmr: false,
     },
     tools: {
         rspack: {
