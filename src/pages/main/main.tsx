@@ -47,6 +47,7 @@ const OverUnderTab = lazy(() => import('../over-under'));
 const RiskManagementTab = lazy(() => import('../risk-management'));
 const MultiTraderTab = lazy(() => import('../multi-trader'));
 const TradingEngineTab = lazy(() => import('../trading-engine'));
+const Quantum24hAutoTraderTab = lazy(() => import('../quantum-24h'));
 // const DTrader = lazy(() => import('../dtrader/index')); // Removed as per request
 
 const DTraderIcon = () => (
@@ -62,6 +63,28 @@ const DTraderIcon = () => (
                 <stop stopColor='#43a8ff' />
                 <stop offset='1' stopColor='#7b5cf7' />
             </linearGradient>
+        </defs>
+    </svg>
+);
+
+const Quantum24hAutoTraderIcon = () => (
+    <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <circle cx='12' cy='12' r='10' fill='url(#quantum-gradient1)' />
+        <path d='M12 5V19M5 12H19' stroke='url(#quantum-gradient2)' strokeWidth='2' strokeLinecap='round' />
+        <circle cx='12' cy='12' r='3' fill='url(#quantum-gradient3)' />
+        <defs>
+            <radialGradient id='quantum-gradient1'>
+                <stop stopColor='#00ff88' offset='0%' />
+                <stop stopColor='#00ccff' offset='100%' />
+            </radialGradient>
+            <linearGradient id='quantum-gradient2' x1='0%' y1='0%' x2='100%' y2='100%'>
+                <stop stopColor='#ff00ff' offset='0%' />
+                <stop stopColor='#00ffff' offset='100%' />
+            </linearGradient>
+            <radialGradient id='quantum-gradient3'>
+                <stop stopColor='#ffff00' />
+                <stop stopColor='#ff00ff' offset='100%' />
+            </radialGradient>
         </defs>
     </svg>
 );
@@ -273,6 +296,7 @@ const AppWrapper = observer(() => {
         'multi_trader',
         'dtrader',
         'trading_engine',
+        'quantum_24h',
     ];
     const { isDesktop } = useDevice();
     const location = useLocation();
@@ -758,6 +782,21 @@ const AppWrapper = observer(() => {
                                 <PageContentWrapper>
                                     <Suspense fallback={<ChunkLoader message={localize('Loading Trading Engine...')} />}>
                                         <TradingEngineTab />
+                                    </Suspense>
+                                </PageContentWrapper>
+                            </div>
+                            <div
+                                label={
+                                    <div className='main__tabs-label'>
+                                        <Quantum24hAutoTraderIcon />
+                                        <Localize i18n_default_text='Quantum 24H' />
+                                    </div>
+                                }
+                                id='id-quantum-24h'
+                            >
+                                <PageContentWrapper>
+                                    <Suspense fallback={<ChunkLoader message={localize('Loading Quantum 24H Auto Trader...')} />}>
+                                        <Quantum24hAutoTraderTab />
                                     </Suspense>
                                 </PageContentWrapper>
                             </div>
