@@ -2047,7 +2047,7 @@ export default class SmartTradingStore {
                     symbol: this.symbol,
                     ...(['DIGITOVER', 'DIGITUNDER', 'DIGITMATCH', 'DIGITDIFF'].includes(trade_type || '') &&
                     prediction !== undefined
-                        ? { barrier: String(prediction) }
+                        ? { barrier: Number(prediction) }
                         : {}),
                 }),
                 timeoutPromise(10000, 'Proposal timed out'),
@@ -2499,7 +2499,7 @@ export default class SmartTradingStore {
                 duration,
                 duration_unit: 't',
                 symbol: this.symbol,
-                ...(prediction !== undefined ? { barrier: String(prediction) } : {}),
+                ...(prediction !== undefined ? { barrier: Number(prediction) } : {}),
             });
 
             if (proposal.error) return;
@@ -2764,7 +2764,7 @@ export default class SmartTradingStore {
                 duration: 1,
                 duration_unit: 't',
                 symbol: this.symbol,
-                ...(trade.prediction !== undefined ? { barrier: String(trade.prediction) } : {}),
+                ...(trade.prediction !== undefined ? { barrier: Number(trade.prediction) } : {}),
             });
 
             if (proposal.error) {
@@ -3035,7 +3035,7 @@ export default class SmartTradingStore {
                 duration: 1,
                 duration_unit: 't',
                 symbol: config.market,
-                ...(prediction !== undefined ? { barrier: String(prediction) } : {}),
+                ...(prediction !== undefined ? { barrier: Number(prediction) } : {}),
             });
 
             if (proposal.error) {
@@ -3277,7 +3277,7 @@ export default class SmartTradingStore {
                     duration: 1,
                     duration_unit: 't',
                     symbol,
-                    ...(barrier !== undefined ? { barrier: String(barrier) } : {}),
+                    ...(barrier !== undefined ? { barrier: Number(barrier) } : {}),
                 };
 
                 const response = await api_base.api.send(proposal_request);

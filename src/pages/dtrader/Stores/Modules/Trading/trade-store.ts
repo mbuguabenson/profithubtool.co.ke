@@ -1615,7 +1615,7 @@ export default class TradeStore extends BaseStore {
                     const chart_barrier = response.proposal.barrier_spot_distance;
                     this.setMainBarrier({
                         ...response.echo_req,
-                        barrier: String(chart_barrier),
+                        barrier: Number(chart_barrier),
                     });
                 }
             } else {
@@ -2027,10 +2027,10 @@ export default class TradeStore extends BaseStore {
 
                         current_spot_data = {
                             ...current_spot_data,
-                            accumulators_high_barrier: String(
+                            accumulators_high_barrier: Number(
                                 current_spot_data.current_spot + barrier_spot_distance_num
                             ),
-                            accumulators_low_barrier: String(
+                            accumulators_low_barrier: Number(
                                 current_spot_data.current_spot - barrier_spot_distance_num
                             ),
                             barrier_spot_distance: barriers_data.barrier_spot_distance,

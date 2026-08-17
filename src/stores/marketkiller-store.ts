@@ -147,7 +147,7 @@ export default class MarketkillerStore {
                     duration: this.matches_settings.duration || 1,
                     duration_unit: 't',
                     symbol: config.symbol,
-                    barrier: String(config.barrier),
+                    barrier: Number(config.barrier),
                 },
             });
         } catch (e: any) {
@@ -585,7 +585,7 @@ export default class MarketkillerStore {
                     duration: this.matches_settings.duration || 1,
                     duration_unit: 't',
                     symbol: config.symbol,
-                    barrier: String(config.barrier),
+                    barrier: Number(config.barrier),
                 },
             });
         });
